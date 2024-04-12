@@ -1,10 +1,28 @@
-BASH COMMANDS
 - python -m venv venv
 - source venv/scripts/activate
+--------------------------------------------
+- deactivate
+- pip list
+- pip freeze
 - python.exe -m pip install --upgrade pip
+--------------------------------------------
 - pip install django
-- django-admin startproject project .
-- python manage.py startapp main
-
-add the app to settings.py
-add .gitinit
+- django-admin startproject ProjectName .
+- python manage.py startapp AppName
+- python manage.py runserver
+--------------------------------------------
+add : AppName to settings.py
+add .gitignore file to BASE_DIR
+--------------------------------------------
+BASH COMMANDS
+- git init
+- git add .
+- git commit -m '01 - First commit'
+-------------------------------------------- 
+modify : ProjectName.urls.py to inclue AppName.urls
+make : AppName.urls.py to add the index url
+add : index.html
+- python manage.py runserver
+- git add .
+- git commit -m '02 - Add Templates'
+--------------------------------------------
