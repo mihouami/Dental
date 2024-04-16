@@ -100,6 +100,7 @@
       </div>
       <div class="col-md-6 color-3 p-4">
         <h3 class="mb-2">Make an Appointment</h3>
+        <!-- FORM 1 -->
         <form action="#" class="appointment-form">
           <div class="row">
             <div class="col-sm-4">
@@ -670,6 +671,7 @@
           </p>
           <div class="row d-flex justify-content-center mt-5">
             <div class="col-md-8">
+              <!-- FORM 2 -->
               <form action="#" class="subscribe-form">
                 <div class="form-group d-flex">
                   <input
@@ -1031,7 +1033,9 @@
         <div class="heading-section mb-5 ftco-animate">
           <h2 class="mb-2">Get a Free Quote</h2>
         </div>
-        <form action="#" class="ftco-animate">
+        <!-- FORM 3 -->
+        <form method="post" action="{% url 'get-quote' %}" class="ftco-animate">
+          {% csrf_token %}
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -1039,33 +1043,49 @@
                   type="text"
                   class="form-control"
                   placeholder="Full Name"
+                  name="name"
                 />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Email" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  name="email"
+                />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Phone" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Phone"
+                  name="phone"
+                />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Website" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Website"
+                  name="website"
+                />
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
                 <textarea
-                  name=""
                   id=""
                   cols="30"
                   rows="7"
                   class="form-control"
                   placeholder="Message"
+                  name="message"
                 ></textarea>
               </div>
             </div>
@@ -1085,5 +1105,16 @@
   </div>
 </section>
 
-<div id="map"></div>
+<div class="google-map text-center my-3">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12787.69297987249!2d2.9821872395507927!3d36.748413400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb1d1a06e6999%3A0x380a6151be7b3052!2sCabinet%20Cardiologie%20Dr%20Samy%20BOUGUESSA!5e0!3m2!1sen!2sdz!4v1713209677605!5m2!1sen!2sdz"
+    width="800"
+    height="450"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
 {% endblock %}

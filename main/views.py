@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
+from django.core.mail import send_mail
+
+
 
 def index(request):
     if request.method == 'POST':
@@ -13,6 +17,33 @@ def index(request):
         print('Time: ', time, type(time))
         print('Message: ', message, type(message))
     return render(request, 'main/index.html')
+
+
+
+@require_POST
+def get_quote(request):
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    message_customer = request.POST.get('message')
+    subject = 'Get a Free Quote'
+    from_email = 'flaskapptest@outlook.com'
+    message  = f'''
+            Hello Doctor,
+            
+            You received the following request from the following contact :
+
+            Name: {name}
+            Email: {email}
+            Phone: {phone}
+            Message: {message_customer}
+
+            Regards
+            '''
+    send_mail(subject, message, from_email, ['flaskapptest@outlook.com'])
+    return redirect('index')
+
+
 
 
 def contact(request):
