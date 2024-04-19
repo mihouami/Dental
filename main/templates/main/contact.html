@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}<!---->
 {% load static %}<!---->
-{% block title %} Index {% endblock %}<!---->
+{% block title %} Contact {% endblock %}<!---->
 {% block body %}
 
 <section class="home-slider owl-carousel">
@@ -31,6 +31,18 @@
     </div>
   </div>
 </section>
+
+<br /><br />
+{% if request.GET.name %}
+<center>
+  <div class="container">
+    <h2 class="bold">Thanks {{ request.GET.name }}</h2>
+    <p>
+      We confirm the reception of your request, you will get soon a feedback
+    </p>
+  </div>
+</center>
+{% endif %}
 
 <section class="ftco-section contact-section ftco-degree-bg">
   <div class="container">

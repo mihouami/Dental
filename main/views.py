@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.core.mail import send_mail
+from django.urls import reverse
+
 
 
 
@@ -41,13 +43,28 @@ def get_quote(request):
             Regards
             '''
     send_mail(subject, message, from_email, ['flaskapptest@outlook.com'])
-    return redirect('index')
+    return redirect(reverse('contact') + f'?name={name}')
 
 
 
 
 def contact(request):
     return render(request, 'main/contact.html')
+
+def about(request):
+    return render(request, 'main/about.html')
+
+def blog_single(request):
+    return render(request, 'main/blog-single.html')
+
+def blog(request):
+    return render(request, 'main/blog.html')
+
+def doctors(request):
+    return render(request, 'main/doctors.html')
+
+def services(request):
+    return render(request, 'main/services.html')
 
 def test(request):
     return render(request, 'main/test.html')
