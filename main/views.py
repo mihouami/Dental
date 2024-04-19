@@ -47,8 +47,53 @@ def get_quote(request):
 
 
 
+@require_POST
+def modal(request):
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    date = request.POST.get('date')
+    time = request.POST.get('time')
+    message_customer = request.POST.get('message')
+    subject = 'Appointment request'
+    from_email = 'flaskapptest@outlook.com'
+    message  = f'''
+            Hello Doctor,
+            
+            You received the following request from the following contact :
+
+            Name: {name}
+            Email: {email}
+            Date: {date}
+            Time: {time}
+            Message: {message_customer}
+
+            Regards
+            '''
+    send_mail(subject, message, from_email, ['flaskapptest@outlook.com'])
+    return redirect(reverse('contact') + f'?name={name}')
+
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        print(name)
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message_customer = request.POST.get('message')
+        from_email = 'flaskapptest@outlook.com'
+        message  = f'''
+            Hello Doctor,
+            
+            You received the following request from the following contact :
+
+            Name: {name}
+            Email: {email}
+            Message: {message_customer}
+
+            Regards
+            '''
+        send_mail(subject, message, from_email, ['flaskapptest@outlook.com'])
+        return redirect(reverse('contact') + f'?name={name}')
     return render(request, 'main/contact.html')
 
 def about(request):
